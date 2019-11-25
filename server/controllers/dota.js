@@ -10,7 +10,7 @@ module.exports = {
       url: 'live'
     })
       .then(({data}) => {
-        for(let i=0; i<2; i++) {
+        for(let i=0; i<1; i++) {
           let random = Math.floor(Math.random() * data.length)
           randomLive.push(data[random])
         }
@@ -41,6 +41,21 @@ module.exports = {
           party: data.competitive_rank,
           profile: data.profile
         })
+      })
+      .catch(next)
+  },
+  getHeroStats (req, res, next) {
+    const id = req.params.id;
+    axios({
+      method: 'get',
+      url: '/heroStats'
+    })
+      .then(({data}) => {
+        let temp 
+        data.forEach((el, i) => {
+          if(el.id == id) temp = el
+        })
+        res.status(200).json({hero: temp})
       })
       .catch(next)
   }

@@ -1,29 +1,19 @@
 import React, { Component, Fragment } from 'react'
-import axios from '../../../apis/server'
+import { MDBCardImage } from "mdbreact";
+import axios from '../../../apis/server';
+import Modal from '../Modal/Modal'
+
 import './OneCard.css'
 
 class OneCard extends Component {
   state = {
     player: {},
-    hero: {}
+    hero: {},
+    modal: false
   }
 
   componentDidMount () {
-    this.fetchAccId()
     this.fetchHeroId()
-  }
-
-  fetchAccId = () => {
-    axios({
-      method: 'get',
-      url: `/dota/acc/${this.props.player}`
-    })
-      .then(({data}) => {
-        this.setState({
-          player: data
-        })
-      })
-      .catch(console.log)
   }
 
   fetchHeroId = () => {
@@ -32,7 +22,6 @@ class OneCard extends Component {
       url: `/hero/${this.props.hero}`
     })
     .then(({data}) => {
-      console.log(data)
       this.setState({
         hero: data.hero
       })
@@ -40,14 +29,34 @@ class OneCard extends Component {
     .catch(console.log)
   }
 
+  toggle = nr => () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   render () {
     let check = null
-    if(this.state.hero) {
+    // if(this.state.hero) {
       if(this.state.hero.vertical) {
         check = <Fragment>
-                  <div className='imageCard'>
-                    <img src={this.state.hero.vertical} alt='hero_image' />
+                  {/* <div className='imageCard'> */}
+                  <div
+                    onClick={this.toggle(this.state.hero.id)}
+                    >
+                    <MDBCardImage
+                      className="img-fluid imageCard"
+                      src={this.state.hero.vertical}
+                      waves
+                    />
                   </div>
+                    {/* <img src={this.state.hero.vertical} alt='hero_image' /> */}
+                  {/* </div> */}
+                  <Modal 
+                    modal={this.state.modal}
+                    getToggle={this.toggle(this.state.hero.id)}
+                    hero={this.state.hero}
+                    playerId={this.props.player}
+                  />
                 </Fragment>
       } else {
         check = <Fragment>
@@ -56,9 +65,9 @@ class OneCard extends Component {
           </div>
         </Fragment>
       }
-    } else {
-      check = <div>EMPTY</div>
-    }
+    // } else {
+    //   check = <div>EMPTY</div>
+    // }
     return check
   }
 }

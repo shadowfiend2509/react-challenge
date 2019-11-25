@@ -19,19 +19,21 @@ module.exports = {
   },
   findByIdHero (req, res, next) {
     const {id} = req.params;
-    Hero.find()
-      .then(heroes => {
-        if(heroes) {
-          let temphero = {};
-          heroes.forEach((el, i) => {
-            if(el.id == id) {
-              temphero = el
-            }
-          })
-          res.status(200).json({hero: temphero})
+    Hero.findOne({ id })
+      .then(hero => {
+        if(hero) {
+          res.status(200).json({ hero })
         } else {
           next({status: 404, msg: 'Hero not Found!'})
         }
+      })
+      .catch(next)
+  },
+  getByName (req, res, next) {
+    const { name } = req.params
+    Hero.find({ name: new RegExp(name, 'i')})
+      .then(heroes => {
+        res.status(200).json({heroes})
       })
       .catch(next)
   }

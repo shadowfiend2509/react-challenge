@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
+
 .NavBar {
   display: flex;
   flex-direction: row;
@@ -10,12 +12,14 @@
   margin-right: 20px;
 }
 .logoName {
+  cursor: pointer;
   font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-weight: bold;
+  font-family: 'Oswald', sans-serif;
 }
 .btnLogin {
   height: 50px;

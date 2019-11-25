@@ -1,4 +1,5 @@
 const { model, Schema } = require('mongoose');
+const { hashPassword } = require('../helpers/hash');
 
 const UserSchema = new Schema({
   username: {
@@ -13,7 +14,14 @@ const UserSchema = new Schema({
     type: String,
     required: [true, 'email is required'],
     unique: true
-  }
+  },
+  role: String
+})
+
+UserSchema.pre('save', function (next) {
+  this.password = hashPassword (this.password)
+  this.role = 'annon';
+  next()
 })
 
 UserSchema.path('email').validate(function (val) {

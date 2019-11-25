@@ -1,0 +1,22 @@
+
+.modalRow {
+  border: 1px solid gold;
+}
+.rowRight {
+  display: flex;
+  flex-wrap: wrap;
+}
+.avatar {
+  position: absolute;
+}
+.textCard {
+  color: white !important;
+}
+.textCard:hover {
+  color: black !important;
+}
+.blockquote {
+  font-weight: bold;
+  height: 10vw;
+  font-size: 30px !important
+}
