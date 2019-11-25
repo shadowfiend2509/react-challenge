@@ -1,0 +1,15 @@
+
+
+.backCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  overflow: auto;
+  height: 89.3vh;
+  justify-content: center;
+}
+
+.App {
+  background-color: #282c34;
+}

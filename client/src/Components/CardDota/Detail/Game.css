@@ -1,0 +1,10 @@
+
+.topLeft {
+  margin-left: 20px;
+}
+.topRight {
+  margin-right: 20px
+}
+.middle {
+  display: inline-block;
+}

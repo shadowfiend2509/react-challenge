@@ -1,0 +1,49 @@
+.card {
+  display: flex;
+  width: 1700px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: 37px;
+  border: 1px solid green
+}
+
+.topHeader {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 5px;
+  height: 65px
+}
+.matches {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topHeader h3 {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  bottom: 20px
+}
+.leftSide {
+  display: flex;
+  margin-bottom: 250px;
+}
+
+.rightSide {
+  display: flex;
+  margin-top: 250px
+  /* margin: 100px 100px */
+}
+
+.imageVS {
+  position: relative;
+  transform: rotate(-20deg);
+  margin: 190px auto;
+}
+.imageVS img {
+  width: 70px;
+}

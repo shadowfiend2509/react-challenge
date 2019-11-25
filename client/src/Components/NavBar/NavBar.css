@@ -1,0 +1,55 @@
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 10px
+}
+.rightNav {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+}
+.logoName {
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+.btnLogin {
+  height: 50px;
+  width: 200px;
+  padding: 10px 10px;
+  font-size: 25px;
+  color: black;
+  margin-right: 25px;
+  background-color: beige;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 15px
+}
+.btnLogin:hover{
+  cursor: pointer;
+  color: blue;
+  background-color: wheat;
+}
+
+.btnLogout {
+  height: 50px;
+  width: 200px;
+  padding: 10px 10px;
+  font-size: 25px;
+  color: black;
+  background-color: beige;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 15px
+}
+.btnLogout:hover{
+  cursor: pointer;
+  color: blue;
+  background-color: wheat;
+}
