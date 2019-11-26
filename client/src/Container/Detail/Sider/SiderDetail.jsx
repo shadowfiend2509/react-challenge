@@ -12,110 +12,43 @@ export default () => {
   const [ getDireWinRate, setDireWinRate ] = useState({})
 
   useEffect( () => {
+    const fetchRadiantWinRate = () => {
+      axios({
+        method: 'get',
+        url: `/dota/radiant/${id}`
+      })
+        .then(({data}) => {
+          setRadiantWinRate(data)
+        })
+        .catch(console.log)
+    }
+    const fetchDireWinRate = () => {
+      axios({
+        method: 'get',
+        url: `/dota/dire/${id}`
+      })
+        .then(({data}) => {
+          setDireWinRate(data)
+        })
+        .catch(console.log)
+    }
     fetchRadiantWinRate()
     fetchDireWinRate()
   }, [])
 
-  function fetchRadiantWinRate () {
-    axios({
-      method: 'get',
-      url: `/dota/radiant/${id}`
-    })
-      .then(({data}) => {
-        setRadiantWinRate(data)
-      })
-      .catch(console.log)
-  }
-
-  function fetchDireWinRate () {
-    axios({
-      method: 'get',
-      url: `/dota/dire/${id}`
-    })
-      .then(({data}) => {
-        setDireWinRate(data)
-      })
-      .catch(console.log)
-  }
-  const contentRadiant = (
-    <>
-      <p>Kill: {getRadiantWinRate.kill}</p>
-      <p>Death: {getRadiantWinRate.death}</p>
-      <p>Assist: {getRadiantWinRate.assist}</p>
-    </>
-  )
-  const titleRadiant = (
-    <>
-      <p>Win Rate:{getRadiantWinRate.winRate} %</p>
-    </>
-  )
-  const contentDire = (
-    <>
-      <p>Kill: {getDireWinRate.kill}</p>
-      <p>Death: {getDireWinRate.death}</p>
-      <p>Assist: {getDireWinRate.assist}</p>
-    </>
-  )
-  const titleDire = (
-    <>
-      <p>Win Rate:{getDireWinRate.winRate} %</p>
-    </>
-  )
-  const renderUpRadiant = (
-    <Statistic
-      title="Active"
-      value={getRadiantWinRate.winRate}
-      precision={2}
-      valueStyle={{ color: '#3f8600' }}
-      prefix={<Icon type="arrow-up" />}
-      suffix="%"
-    />
-  )
-  const renderDownRadiant = (
-    <Statistic
-      title="Active"
-      value={getRadiantWinRate.winRate}
-      precision={2}
-      valueStyle={{ color: '#3f8600' }}
-      prefix={<Icon type="arrow-down" />}
-      suffix="%"
-    />
-  )
-  const renderUpDire = (
-    <Statistic
-      title="Active"
-      value={getDireWinRate.winRate}
-      precision={2}
-      valueStyle={{ color: '#3f8600' }}
-      prefix={<Icon type="arrow-up" />}
-      suffix="%"
-    />
-  )
-  const renderDownDire = (
-    <Statistic
-      title="Active"
-      value={getDireWinRate.winRate}
-      precision={2}
-      valueStyle={{ color: '#3f8600' }}
-      prefix={<Icon type="arrow-down" />}
-      suffix="%"
-    />
-  )
-
   useEffect(() => {
+    const getIdHero = () => {
+      axios({
+        method: 'get',
+        url: `/hero/${id}`
+      })
+        .then(({data}) => {
+          setHeroServer(data.hero)
+        })
+        .catch(console.log)
+    }
     getIdHero()
   }, [])
-
-  function getIdHero () {
-    axios({
-      method: 'get',
-      url: `/hero/${id}`
-    })
-      .then(({data}) => {
-        setHeroServer(data.hero)
-      })
-      .catch(console.log)
-  }
 
   return (
     <>

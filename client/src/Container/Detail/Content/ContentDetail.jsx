@@ -12,25 +12,25 @@ export default () => {
   const history = useHistory()
 
   useEffect(() => {
+    const fetchHeroDetail = () => {
+      axios({
+        method: 'get',
+        url: `/dota/${id}`
+      })
+        .then(({data}) => {
+          console.log(data.hero)
+          setHeroDetail(data.hero)
+        })
+        .catch(console.log)
+    }
     fetchHeroDetail()
   }, [])
 
-  function fetchHeroDetail () {
-    axios({
-      method: 'get',
-      url: `/dota/${id}`
-    })
-      .then(({data}) => {
-        console.log(data.hero)
-        setHeroDetail(data.hero)
-      })
-      .catch(console.log)
-  }
 
   return (
     <>
       <Card title='Detail Hero' bordered={false} style={{ width: '100%' }}>
-        <div class='cardHero'>
+        <div className='cardHero'>
           <div className='textHero'>
             <p>Type :</p> &nbsp;
             <p>{heroDetail.attack_type}</p>

@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const { comparePassword } = require('../helpers/hash');
+const Fav = require('../models/fav');
 const { signToken } = require('../helpers/jwt');
 
 module.exports = {
@@ -25,9 +26,14 @@ module.exports = {
   },
   signup (req, res, next) {
     const { username, password, email } = req.body;
+    let tempUser
     User.create({ username, password, email })
       .then(user => {
-        res.status(201).json({user})
+        tempUser = user
+        return Fav.create({ UserId: user._id })
+      })
+      .then(() => {
+        res.status(201).json({user: tempUser})
       })
       .catch(next)
   }

@@ -8,25 +8,20 @@ import './Search.css'
 export default (props) => {
   const [ heroes, setHeroes ] = useState([])
   const { name } = useParams()
+  
   useEffect( () => {
-    fetchHeroes()
-  }, [])
-
-  useEffect( () => {
+    const fetchHeroes = () => {
+      axios({
+        method: 'get',
+        url: `/hero/name/${name}`
+      })
+        .then(({data}) => {
+          setHeroes(data.heroes)
+        })
+        .catch(console.log)
+    }
     fetchHeroes()
   }, [name])
-
-  function fetchHeroes () {
-    axios({
-      method: 'get',
-      url: `/hero/name/${name}`
-    })
-      .then(({data}) => {
-        setHeroes(data.heroes)
-      })
-      .catch(console.log)
-  }
-
 
   return ( 
     <>

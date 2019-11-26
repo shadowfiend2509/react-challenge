@@ -13,30 +13,30 @@ export default (props) => {
   const history = useHistory()
   
   useEffect(_ => {
+    const fetchAccId = () => {
+      axios({
+        method: 'get',
+        url: `/dota/acc/${props.playerId}`
+      })
+        .then(({data}) => {
+          setPlayer(data.profile)
+        })
+        .catch(console.log)
+    }
+    const fetchDetailHero = () => {
+      axios({
+        method: 'get',
+        url: `/dota/${props.hero.id}`
+      })
+        .then(({data}) => {
+          setHeroDetail(data.hero)
+        })
+        .catch(console.log)
+    }
     fetchDetailHero()
     fetchAccId()
   }, [])
 
-  function fetchAccId () {
-    axios({
-      method: 'get',
-      url: `/dota/acc/${props.playerId}`
-    })
-      .then(({data}) => {
-        setPlayer(data.profile)
-      })
-      .catch(console.log)
-  }
-  function fetchDetailHero () {
-    axios({
-      method: 'get',
-      url: `/dota/${props.hero.id}`
-    })
-      .then(({data}) => {
-        setHeroDetail(data.hero)
-      })
-      .catch(console.log)
-  }
   return (
     <MDBModal isOpen={props.modal} toggle={() => props.getToggle(props)} fullHeight position="top">
       <MDBModalHeader toggle={() => props.getToggle}>AVG MMR {props.avgMmr}</MDBModalHeader>

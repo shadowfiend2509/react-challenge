@@ -1,5 +1,6 @@
 const { decodeToken } = require('../helpers/jwt');
 const User = require('../models/user');
+const Fav = require('../models/fav')
 
 module.exports = {
   authentication (req, res, next) {
@@ -31,5 +32,5 @@ module.exports = {
     catch(err) {
       next(err)
     }
-  }
+  },
 }

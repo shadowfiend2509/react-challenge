@@ -9,20 +9,20 @@ export default () => {
 
   useEffect(() => {
     setId([])
+    const fetchId = () => {
+      axios({
+        method: 'get',
+        url: `/dota/role/${id}`
+      })
+        .then(({data}) => {
+          console.log(data)
+          setId(data.hero)
+        })
+        .catch(console.log)
+    }
     fetchId()
   }, [id])
 
-  function fetchId () {
-    axios({
-      method: 'get',
-      url: `/dota/role/${id}`
-    })
-      .then(({data}) => {
-        console.log(data)
-        setId(data.hero)
-      })
-      .catch(console.log)
-  }
   return (
     <>
       {

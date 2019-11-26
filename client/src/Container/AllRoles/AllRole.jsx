@@ -10,19 +10,19 @@ export default () => {
   const [roles, setRoles] = useState([])
 
   useEffect(() => {
+    const fetchRoles = () => {
+      axios({
+        method: 'get',
+        url: '/dota/role/all'
+      })
+        .then(({data}) => {
+          setRoles(data.role)
+        })
+        .catch(console.log)
+    }
     fetchRoles()
   }, [])
   
-  function fetchRoles () {
-    axios({
-      method: 'get',
-      url: '/dota/role/all'
-    })
-      .then(({data}) => {
-        setRoles(data.role)
-      })
-      .catch(console.log)
-  }
   return (
     <>
       <div className="mainRoles">

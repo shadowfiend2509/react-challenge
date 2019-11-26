@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react'
 import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from "mdbreact";
 import { useHistory } from 'react-router-dom'
+import ModalSignin from './ModalSignin'
 import './NavBar.css'
 
 export default () => {
@@ -59,7 +60,7 @@ export default () => {
             <MDBBtn color="primary" onClick={findName}>Save changes</MDBBtn>
           </MDBModalFooter>
         </MDBModal>
-        <MDBBtn outline color='secondary'>SignIn</MDBBtn>
+        <ModalSignin />
         <MDBBtn rounded outline color='secondary'>SignOut</MDBBtn>
       </div>
     </div>

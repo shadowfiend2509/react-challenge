@@ -8,20 +8,19 @@ export default (props) => {
   const [hero, setHero] = useState({})
 
   useEffect(() => {
-    console.log(props.id)
+    const fetchHero = () => {
+      axios({
+        method: 'get',
+        url: `/hero/${props.id}`
+      })
+        .then(({data}) => {
+          setHero(data.hero)
+        })
+        .catch(console.log)
+    }
     fetchHero()
   }, [])
 
-  function fetchHero () {
-    axios({
-      method: 'get',
-      url: `/hero/${props.id}`
-    })
-      .then(({data}) => {
-        setHero(data.hero)
-      })
-      .catch(console.log)
-  }
   return (
     <>
       {
