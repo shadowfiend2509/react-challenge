@@ -9,9 +9,6 @@ export default (props) => {
   return (
     <Fragment>
         <div className="card1">
-          <div className="textLive">
-            Live Game
-          </div>
           <div className="topHeader">
             <DetailGame 
               spectators={props.spectators} 
@@ -28,6 +25,7 @@ export default (props) => {
                     key={i}
                     player={pem.account_id}
                     hero={pem.hero_id}
+                    avgMmr={props.avgMmr}
                   />
                 })
               }
@@ -42,6 +40,7 @@ export default (props) => {
                       key={i}
                       player={pal.account_id} 
                       hero={pal.hero_id}
+                      avgMmr={props.avgMmr}
                     />
                 })
               }

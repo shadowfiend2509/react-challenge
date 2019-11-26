@@ -6,11 +6,18 @@
   flex-wrap: wrap;
   padding: 20px;
   overflow: auto;
-  height: 93.5vh;
+  height: 93vh;
   justify-content: center;
 }
 
 .App {
   background-color: #282c34;
   height: 100vh;
+}
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+.textLive {
+  font-size: 100px;
+  color: orange;
+  position: relative;
+  font-family: 'Raleway', sans-serif;
 }

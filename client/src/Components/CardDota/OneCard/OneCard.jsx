@@ -36,38 +36,33 @@ class OneCard extends Component {
   }
   render () {
     let check = null
-    // if(this.state.hero) {
-      if(this.state.hero.vertical) {
-        check = <Fragment>
-                  {/* <div className='imageCard'> */}
-                  <div
-                    onClick={this.toggle(this.state.hero.id)}
-                    >
-                    <MDBCardImage
-                      className="img-fluid imageCard"
-                      src={this.state.hero.vertical}
-                      waves
-                    />
-                  </div>
-                    {/* <img src={this.state.hero.vertical} alt='hero_image' /> */}
-                  {/* </div> */}
-                  <Modal 
-                    modal={this.state.modal}
-                    getToggle={this.toggle(this.state.hero.id)}
-                    hero={this.state.hero}
-                    playerId={this.props.player}
+    if(this.state.hero.vertical) {
+      check = <Fragment>
+                <div
+                  onClick={this.toggle(this.state.hero.id)}
+                  >
+                  <MDBCardImage
+                    className="img-fluid imageCard"
+                    src={this.state.hero.vertical}
+                    waves
                   />
-                </Fragment>
-      } else {
-        check = <Fragment>
-          <div className="imageCard">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSRI-idoNr0Fwg0QR5zSsWSKZUXy6YH-UgilqamaVncQFD7NwTM" alt="hero_image"/>
-          </div>
-        </Fragment>
-      }
-    // } else {
-    //   check = <div>EMPTY</div>
-    // }
+                </div>
+                <Modal 
+                  key={this.state.hero.id}
+                  modal={this.state.modal}
+                  getToggle={this.toggle(this.state.hero.id)}
+                  hero={this.state.hero}
+                  playerId={this.props.player}
+                  avgMmr={this.props.avgMmr}
+                />
+              </Fragment>
+    } else {
+      check = <Fragment>
+        <div className="imageCard">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSRI-idoNr0Fwg0QR5zSsWSKZUXy6YH-UgilqamaVncQFD7NwTM" alt="hero_image"/>
+        </div>
+      </Fragment>
+    }
     return check
   }
 }

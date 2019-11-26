@@ -1,24 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 
 .card1 {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 80%;
-  height: 500px
+  height: 500px;
+  margin-top: -100px
 }
-.textLive {
-  font-size: 150px;
-  color: orange;
-  position: relative;
-  font-family: 'Raleway', sans-serif;
-}
+
 .topHeader {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  margin-top: 25px;
   padding: 5px;
 }
 .matches {

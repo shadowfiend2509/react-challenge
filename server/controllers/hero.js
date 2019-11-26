@@ -12,7 +12,6 @@ module.exports = {
   getAllHero (req, res, next) {
     Hero.find()
       .then(heroes => {
-        console.log(heroes)
         res.status(200).json({heroes})
       })
       .catch(next)

@@ -3,7 +3,7 @@ import { MDBBtn, MDBInput, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFoote
 import { useHistory } from 'react-router-dom'
 import './NavBar.css'
 
-export default (props) => {
+export default () => {
   const [ modal, setModal ] = useState(false)
   const [ heroSearch, setHeroSearch ] = useState('')
   const [ typing, setTyping ] = useState(false)
@@ -29,8 +29,19 @@ export default (props) => {
   return (
   <Fragment>
     <div className="NavBar">
-      <div className="logoName ml-3" onClick={backHome}>
-        DC DOTA
+      <div className="ml-3 logName">
+        <div className="logoName" onClick={backHome}>
+          DC DOTA
+        </div>
+        <div className="showHeroes" onClick={() => history.push('/heroes')}>
+          All Heroes
+        </div>
+        <div className="showHeroes" onClick={() => history.push('/roles')}>
+          All Roles
+        </div>
+        <div className="showProMatches">
+          Pro Matches
+        </div>
       </div>
       <div className="rightNav">
         <MDBBtn onClick={toggle}>Search Heroes</MDBBtn>

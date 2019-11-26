@@ -1,0 +1,11 @@
+.cardHero {
+  display: flex;
+  font-size: 35px;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto !important;
+}
+.textHero {
+  display: flex;
+  flex-direction: row;
+}

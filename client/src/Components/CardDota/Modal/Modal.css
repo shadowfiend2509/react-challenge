@@ -1,10 +1,8 @@
 
-.modalRow {
-  border: 1px solid gold;
-}
 .rowRight {
   display: flex;
   flex-wrap: wrap;
+  margin-top: -10px
 }
 .avatar {
   position: absolute;
@@ -19,4 +17,9 @@
   font-weight: bold;
   height: 10vw;
   font-size: 30px !important
+}
+.cardModal{ 
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }

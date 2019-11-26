@@ -6,14 +6,10 @@ import './Home.css'
 class Home extends Component {
   state = {
     data: [],
-    say: 'hello worlds',
-    page: null
+    say: 'hello worlds'
   }
 
   componentDidMount () {
-    this.setState({
-      page: 'mainPage'
-    })
     this.fetchData()
   }
 
@@ -39,6 +35,9 @@ class Home extends Component {
   render () {
     return (
       <Fragment>
+        <div className="textLive">
+          Live Game
+        </div>
         {
           this.state.data.map((dota, i) => {
             return <Dota

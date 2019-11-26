@@ -1,0 +1,10 @@
+.forSearch {
+  display: flex;
+}
+.leftSearch {
+  flex: 0 50%;
+}
+.rightSearch {
+  flex: 0 50%;
+  margin-left: 2px
+}

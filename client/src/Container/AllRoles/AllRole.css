@@ -1,0 +1,16 @@
+.mainRoles {
+  display: flex;
+  flex-direction: column;
+}
+.topRoles {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  justify-content: center;
+}
+.nestedRoles {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap
+}
