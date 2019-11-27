@@ -8,12 +8,16 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 
-import { createStore } from 'redux'
-import AllRecuders from './Reducers'
+import favMiddleware from './store/middlewares/AddtoFav'
+import { createStore, applyMiddleware } from 'redux'
+import AllRecuders from './store/Reducers'
 import { Provider } from 'react-redux'
 
-const store = createStore(AllRecuders, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
+const store = createStore(AllRecuders,applyMiddleware(favMiddleware))
+
+
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 ReactDOM.render(
   <Provider store={store}>
     <App />

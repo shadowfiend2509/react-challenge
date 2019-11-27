@@ -26,7 +26,7 @@ export default () => {
   return (
     <>
       {
-        (getId) ? getId.map(id => <RoleIdComponent id={id} />) : <p>Empty</p>
+        (getId) ? getId.map(id => <RoleIdComponent id={id} />) : null
       }
     </>
   )

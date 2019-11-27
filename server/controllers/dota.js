@@ -162,5 +162,37 @@ module.exports = {
         res.status(200).json({hero: tempHero})
       })
       .catch(next)
+  },
+  getTeamDota (req, res, next) {
+    axios({
+      method: 'get',
+      url: '/teams'
+    })
+      .then(({data}) => {
+        let tempTeam = [];
+        for(let i=0; i<24; i++) {
+          let random = Math.floor(Math.random() * data.length)
+          tempTeam.push(data[random])
+        }
+        res.status(200).json({team: tempTeam})
+      })
+      .catch(next)
+  },
+  findOneTeam (req, res, next) {
+    const { name } = req.params
+    axios({
+      method: 'get',
+      url: '/teams'
+    })
+      .then(({data}) => {
+        let tempTeam = []
+        data.forEach((el, i) => {
+          if(el.name == name) {
+            tempTeam.push(el)
+          }
+        })
+        res.status(200).json({team: tempTeam})
+      })
+      .catch(next)
   }
 }

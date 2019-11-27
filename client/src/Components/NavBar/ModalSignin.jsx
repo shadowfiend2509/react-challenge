@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Modal, Button, message } from 'antd';
 import { MDBInput } from 'mdbreact'
-import { useSelector, useDispatch } from 'react-redux'
-import { signin } from '../../Action/'
+import { useDispatch } from 'react-redux'
+import { signin } from '../../store/Action'
 import axios from '../../apis/server'
+// import { GoogleLogin } from 'react-google-login'
 
 export default (props) => {
   const [ visible, setVisible ] = useState(false)
@@ -33,12 +34,33 @@ export default (props) => {
         messageNotif('Welcome to Doto')
       })
       .catch(err => {
-        console.log(err)
-        // messageNotif(err.response.data.msg)
+        message.warning(err.response.data.msg)
       })
-    //axios
   }
-
+  // const responseGoogle = (response) => {
+  //   console.log(response)
+  //   const token = response.tokenObj.id_token
+  //   setLoading(true);
+  //   axios({
+  //     method: 'post',
+  //     url: '/signingoogle',
+  //     data: {
+  //       id_token: token
+  //     }
+  //   })
+  //     .then(({data}) => {
+  //       localStorage.setItem('token', data.token)
+  //       setTimeout(() => {
+  //         setLoading(false)
+  //         setVisible(false)
+  //         // messageNotif(`Google Signin Success, welcome ${user.name}`)
+  //       }, 1000);
+  //     })
+  //     .catch(err => {
+  //       console.log(err.response)
+  //       message.warning(err.response.data.msg)
+  //     })
+  // }
   const handleCancel = () => {
     setVisible(false)
   }
@@ -56,31 +78,17 @@ export default (props) => {
         confirmLoading={Loading}
         onCancel={handleCancel}
       >
+      <img src="https://media3.giphy.com/media/eHKM1zH4JBMk/giphy.gif?cid=790b76119dd91721404bff65de91232ddd7a9518aded24ea&rid=giphy.gif" alt="GIF" style={{ position: 'absolute', width: '100%', margin: '-100px -580px' }}/>
       <MDBInput name='request' label='Email / Username' onChange={({target}) => setRequest(target.value)} value={request} />
       <MDBInput name='request' label='password' type='password' onChange={({target}) => setPassword(target.value)} value={password} />
+      {/* <GoogleLogin
+        clientId="917355642899-pqjp8dcnrrr7237hqmdeu1rf549piu65.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+      /> */}
       </Modal>
     </>
   )
 }
-/*
-
-  render() {
-    const { visible, confirmLoading, ModalText } = this.state;
-    return (
-      <div>
-        <Button type="primary" onClick={this.showModal}>
-          Open Modal with async logic
-        </Button>
-        <Modal
-          title="Title"
-          visible={visible}
-          onOk={this.handleOk}
-          confirmLoading={confirmLoading}
-          onCancel={this.handleCancel}
-        >
-          <p>{ModalText}</p>
-        </Modal>
-      </div>
-    );
-
-*/

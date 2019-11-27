@@ -7,7 +7,8 @@ module.exports = {
     try{
       if(req.headers.token) {
         const decode = decodeToken(req.headers.token)
-        req.loggedUser = decode
+        req.loggedUser = decode;
+        next()
       } else {
         next({ status: 403, msg: 'Authentication Error' })
       }

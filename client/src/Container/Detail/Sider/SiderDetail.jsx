@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { Card, Icon, Avatar, Popover, Statistic } from 'antd'
+import { Card, Icon, Avatar, Popover, Statistic, message } from 'antd'
 import axios from '../../../apis/server';
+import { AddToFav } from '../../../store/Action';
+import { useDispatch } from 'react-redux'
 
 export default () => {
   const [ getHeroServer, setHeroServer ] = useState({})
-  const { id } = useParams(); 
+  let { id } = useParams();
+  const dispatch = useDispatch();
   const { Meta } = Card;
 
   const [ getRadiantWinRate, setRadiantWinRate ] = useState({})
@@ -50,6 +53,9 @@ export default () => {
     getIdHero()
   }, [])
 
+  const AddToFavClick = () => {
+    dispatch(AddToFav(getHeroServer.id))
+  }
   return (
     <>
     <div className='CardDetail'>
@@ -62,7 +68,7 @@ export default () => {
           />
         }
         actions={[
-          <div style={{ alignItems: 'center', margin: '10px auto' }}>
+          <div style={{ alignItems: 'center', margin: '10px auto' }} onClick={AddToFavClick}>
             <Popover content={getHeroServer.name} title='Add to Fav' trigger="hover">
               <Icon size={200} type="plus" key="setting" />
             </Popover>

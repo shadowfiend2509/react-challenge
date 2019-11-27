@@ -17,8 +17,16 @@ module.exports = {
         }
       })
       .then(fav => {
-        if(!pass) res.status(200).json({msg: `Hero with id ${id} removed!`, fav})
-        else res.status(200).json({msg: `Hero with id ${id} added!`, fav})
+        if(!pass) res.status(200).json({msg: `Remove from Fav`, fav, pass})
+        else res.status(200).json({msg: `Add to Fav`, fav, pass})
+      })
+      .catch(next)
+  },
+  getUserFav (req, res, next) {
+    Fav.findOne({ UserId: req.loggedUser.id})
+      .then(fav => {
+        console.log(fav)
+        res.status(200).json({fav})
       })
       .catch(next)
   }

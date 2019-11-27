@@ -5,9 +5,9 @@ import { Card, Tag } from 'antd'
 import { useHistory } from 'react-router-dom'
 import './ContentDetail.css'
 
+
 export default () => {
   const { id } = useParams()
-
   const [ heroDetail, setHeroDetail ] = useState({})
   const history = useHistory()
 
@@ -18,7 +18,6 @@ export default () => {
         url: `/dota/${id}`
       })
         .then(({data}) => {
-          console.log(data.hero)
           setHeroDetail(data.hero)
         })
         .catch(console.log)
@@ -124,33 +123,3 @@ export default () => {
     </>
   )
 }
-
-// "attack_range": 150,
-// "projectile_speed": 0,
-// "attack_rate": 1.4,
-// "move_speed": 310,
-// "turn_rate": 0.5,
-// "cm_enabled": true,
-// "legs": 2,
-// "pro_win": 21,
-// "pro_pick": 35,
-// "hero_id": 1,
-// "pro_ban": 67,
-// "1_pick": 7010,
-// "1_win": 3410,
-// "2_pick": 21364,
-// "2_win": 10595,
-// "3_pick": 34562,
-// "3_win": 17115,
-// "4_pick": 40584,
-// "4_win": 20199,
-// "5_pick": 28966,
-// "5_win": 14278,
-// "6_pick": 11653,
-// "6_win": 5750,
-// "7_pick": 3383,
-// "7_win": 1686,
-// "8_pick": 231,
-// "8_win": 96,
-// "null_pick": 1943313,
-// "null_win": 0

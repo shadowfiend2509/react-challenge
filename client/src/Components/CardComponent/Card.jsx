@@ -1,11 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Card, Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { AddToFav } from '../../store/Action'
 import './Card.css'
 
 export default (props) => {
   const history = useHistory()
+  const {fav} = useSelector(state =>  state.storeFav)
+  const [ isPath, setPath ] = useState(false)
+  const [ isAdd, setAdd ] = useState(false)
+  const [ isHere , setHere ] = useState(false)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(history.location.pathname == '/fav') {
+      setPath(true)
+      setHere(false)
+      setAdd(false)
+    }else if(history.location.pathname == '/heroes') {
+      setPath(false)
+      setAdd(true)
+      setHere(false)
+    }
+  }, [history.location.pathname, fav])
   
+  useEffect(() => {
+    if(history.location.pathname == '/heroes') {
+      setTimeout(() => {
+        for(let i=0; i<fav.HeroId.length; i++) {
+          if(fav.HeroId[i] == props.hero.id){
+            setHere(true)
+            setPath(false)
+            setAdd(false)
+          }
+        }
+      }, 500);
+    }
+  }, [fav])
+  const remove = () => {
+    dispatch(AddToFav(props.hero.id))
+  }
+
   return (
     <>
       <Card
@@ -13,8 +49,21 @@ export default (props) => {
         style={{ width: 240 }}
         cover={<img alt="example" src={props.hero.vertical} />}
         >
-        <b style={{ fontSize: '25px'}}>{props.hero.name}</b> <br></br>
-        <Button type={"dashed"} block onClick={() => history.push(`/detail/${props.hero.id}`)}> Show Detail</Button>
+        <div style={{ textAlign: 'center' }}>
+          <b style={{ fontSize: '25px'}}>{props.hero.name}</b> <br></br>
+          <div>
+            {
+              (isPath) ? <Button type={"danger"} block onClick={remove} >Remove </Button> : null
+            }
+            {
+              (isAdd) ? <Button type={"primary"} block onClick={remove} >Add Fav </Button> : null
+            }
+            {
+              (isHere) ? <Button type={"danger"} block onClick={remove} >Remove </Button> : null
+            }
+            <Button type={"dashed"} block onClick={() => history.push(`/detail/${props.hero.id}`)}> Show Detail</Button>
+          </div>
+        </div>
       </Card>
     </>
   )

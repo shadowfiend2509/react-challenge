@@ -1,0 +1,17 @@
+.teamContainer {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.teamSearch {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.fetchTeam {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%
+}
