@@ -28,14 +28,18 @@ export default (props) => {
   useEffect(() => {
     if(history.location.pathname == '/heroes') {
       setTimeout(() => {
-        for(let i=0; i<fav.HeroId.length; i++) {
-          if(fav.HeroId[i] == props.hero.id){
-            setHere(true)
-            setPath(false)
-            setAdd(false)
+        if(fav.HeroId !== undefined) {
+          for(let i=0; i<fav.HeroId.length; i++) {
+            if(fav.HeroId[i] == props.hero.id){
+              setHere(true)
+              setPath(false)
+              setAdd(false)
+            }
           }
+        } else {
+          setAdd(true)
         }
-      }, 500);
+      }, 1000);
     }
   }, [fav])
   const remove = () => {
