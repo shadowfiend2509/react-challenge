@@ -5,7 +5,12 @@ const FavSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  HeroId: []
+  HeroId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'heroes'
+    }
+  ]
 })
 
 FavSchema.pre('save', function (next) {
