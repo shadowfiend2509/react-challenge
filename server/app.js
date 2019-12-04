@@ -29,7 +29,7 @@ app.use('/', routes);
 io.on('connection', (socket) => {
   console.log('connect to socket ios')
   socket.on('send-message', data => {
-    console.log('masuk dari client', name, message)
+    console.log(data)
     io.emit('send-message', data)
   })
 })
