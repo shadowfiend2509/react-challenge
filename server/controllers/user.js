@@ -12,11 +12,13 @@ module.exports = {
       User.findOne({ $or: [{username: request}, {email: request}] })
         .then(user => {
           if(user && comparePassword(password, user.password)) {
+            console.log(req.body)
             const serverToken = signToken({
               id: user._id,
               email: user.email,
               password: user.password
             })
+            console.log(serverToken)
             res.status(200).json({user, token: serverToken})
           } else {
             next({ status: 400, msg: 'request/password wrong' })
