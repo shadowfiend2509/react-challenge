@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
-const Msg = require('./models/message')
+const cron = require('./helpers/cron')
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -36,4 +36,4 @@ io.on('connection', (socket) => {
 
 app.use(errorHandler);
 
-http.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
+http.listen(PORT, cron, () => console.log(`Listening on PORT ${PORT}`))
