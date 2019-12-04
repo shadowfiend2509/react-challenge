@@ -12,8 +12,8 @@ module.exports = {
           fav.HeroId.forEach((el, i) => {
             if(el == id) pass = false
           })
-          if(!pass) return Fav.findOneAndUpdate({ UserId: req.loggedUser.id }, {$pull: { HeroId: id }}, {new: true})
-          else return Fav.findOneAndUpdate({ UserId: req.loggedUser.id }, {$push: { HeroId: id }}, { new: true })
+          if(!pass) return Fav.findOneAndUpdate({ UserId: req.loggedUser.id }, {$pull: { HeroId: id }}, {new: true}).populate('HeroId')
+          else return Fav.findOneAndUpdate({ UserId: req.loggedUser.id }, {$push: { HeroId: id }}, { new: true }).populate('HeroId')
         }
       })
       .then(fav => {
