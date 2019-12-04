@@ -1,6 +1,6 @@
-const Route = require('express').Router();
-const { createHero, getAllHero, findByIdHero, getByName } = require('../controllers/hero');
-const { authentication, authorCRUDHeroes } = require('../middlewares/auth');
+const Route = require('express').Router()
+const { createHero, getAllHero, findByIdHero, getByName }= require('../controllers/hero')
+const { authentication, authorCRUDHeroes }= require('../middlewares/auth')
 
 Route.get('/', getAllHero)
 Route.get('/:id', findByIdHero)

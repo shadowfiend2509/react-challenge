@@ -1,4 +1,4 @@
-const Fav = require('../models/fav');
+const Fav= require('../models/fav')
 
 module.exports = {
   addOrRemoveFav (req ,res ,next) {
@@ -23,7 +23,7 @@ module.exports = {
       .catch(next)
   },
   getUserFav (req, res, next) {
-    Fav.findOne({ UserId: req.loggedUser.id})
+    Fav.findOne({ UserId: req.loggedUser.id}).populate('HeroId')
       .then(fav => {
         console.log(fav)
         res.status(200).json({fav})

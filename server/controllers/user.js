@@ -1,8 +1,8 @@
-const User = require('../models/user');
-const { comparePassword } = require('../helpers/hash');
-const Fav = require('../models/fav');
-const { signToken } = require('../helpers/jwt');
-const { OAuth2Client } = require('google-auth-library')
+const User= require('../models/user')
+const { comparePassword }= require('../helpers/hash')
+const Fav= require('../models/fav')
+const { signToken }= require('../helpers/jwt')
+const { OAuth2Client }= require('google-auth-library')
 
 module.exports = {
   signin (req, res, next) {

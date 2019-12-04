@@ -1,9 +1,10 @@
-const Route = require('express').Router();
-const { addOrRemoveFav, getUserFav } = require('../controllers/fav');
-const { authentication } = require('../middlewares/auth');
+const Router = require('express').Router()
 
-Route.use(authentication)
-Route.get('/', getUserFav)
-Route.patch('/:id', addOrRemoveFav)
+const { addOrRemoveFav, getUserFav }= require('../controllers/fav')
+const { authentication } = require('../middlewares/auth')
 
-module.exports = Route;
+Router.use(authentication)
+Router.get('/', getUserFav)
+Router.patch('/:id', addOrRemoveFav)
+
+module.exports = Router

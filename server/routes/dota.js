@@ -1,4 +1,6 @@
-const Route = require('express').Router();
+const Route = require('express').Router()
+
+// const Route = require('express').Route();
 const { 
   getLive, 
   getAccountId, 
@@ -9,8 +11,8 @@ const {
   getAllRole,
   getTeamDota,
   findOneTeam
-} = require('../controllers/dota');
-const { authentication } = require('../middlewares/auth');
+}= require('../controllers/dota' )
+const { authentication }= require('../middlewares/auth')
 
 Route.get('/live', getLive);
 Route.get('/team', getTeamDota);

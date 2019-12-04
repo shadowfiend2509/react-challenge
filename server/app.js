@@ -2,14 +2,14 @@ if(process.env.NODE_ENV == 'development') {
   require('dotenv').config();
 }
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const morgan = require('morgan');
+const express= require('express');
+const mongoose= require('mongoose');
+const cors= require('cors');
+const morgan= require('morgan');
+const errorHandler= require('./middlewares/errorHandler');
+const routes= require('./routes');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const errorHandler = require('./middlewares/errorHandler')
-const routes = require('./routes');
 
 app.use(cors());
 app.use(morgan('dev'));

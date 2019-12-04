@@ -1,5 +1,4 @@
-const axios = require('../apis/dotaApis');
-
+const axios= require('../apis/dotaApis')
 
 module.exports = {
   getLive (req, res, next) {

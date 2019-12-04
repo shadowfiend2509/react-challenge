@@ -1,11 +1,16 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema }= require('mongoose')
 
 const FavSchema = new Schema({
   UserId: {
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
-  HeroId: []
+  HeroId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'heroes'
+    }
+  ]
 })
 
 FavSchema.pre('save', function (next) {
