@@ -25,7 +25,6 @@ module.exports = {
   getUserFav (req, res, next) {
     Fav.findOne({ UserId: req.loggedUser.id}).populate('HeroId')
       .then(fav => {
-        console.log(fav)
         res.status(200).json({fav})
       })
       .catch(next)

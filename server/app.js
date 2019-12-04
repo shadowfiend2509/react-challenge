@@ -10,6 +10,9 @@ const errorHandler= require('./middlewares/errorHandler');
 const routes= require('./routes');
 const PORT = process.env.PORT || 3000;
 const app = express();
+const http = require('http').createServer(app)
+const io = require('socket.io')(http)
+const Msg = require('./models/message')
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -22,6 +25,15 @@ mongoose.connect(process.env.MONGODB_URL, { useFindAndModify: true, useNewUrlPar
 
 app.use('/', routes);
 
+
+io.on('connection', (socket) => {
+  console.log('connect to socket ios')
+  socket.on('send-message', (name, message) => {
+    console.log('masuk dari client', name, message)
+    io.emit('send-message', name, message)
+  })
+})
+
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
+http.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))
