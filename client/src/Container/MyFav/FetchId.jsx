@@ -10,7 +10,7 @@ export default (props) => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: `/hero/${props.id}`
+      url: `/hero/${props.id.id}`
     })
       .then(({data}) => {
         setHeroes(data.hero)

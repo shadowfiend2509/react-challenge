@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-mongoose.connect(process.env.MONGODB_URL, { useFindAndModify: true, useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/API-Dota', { useFindAndModify: true, useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('mongoDb now is connected'))
   .catch(console.log)
 

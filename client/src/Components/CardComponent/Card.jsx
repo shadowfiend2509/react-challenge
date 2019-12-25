@@ -26,11 +26,12 @@ export default (props) => {
   }, [history.location.pathname, fav])
   
   useEffect(() => {
+    console.log(fav)
     if(history.location.pathname == '/heroes') {
       setTimeout(() => {
         if(fav.HeroId !== undefined) {
           for(let i=0; i<fav.HeroId.length; i++) {
-            if(fav.HeroId[i] == props.hero.id){
+            if(fav.HeroId[i].id == props.hero.id){
               setHere(true)
               setPath(false)
               setAdd(false)
@@ -43,7 +44,8 @@ export default (props) => {
     }
   }, [fav])
   const remove = () => {
-    dispatch(AddToFav(props.hero.id))
+    console.log(props.hero._id, '================')
+    dispatch(AddToFav(props.hero._id))
   }
 
   return (

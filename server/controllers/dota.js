@@ -13,6 +13,7 @@ module.exports = {
           let random = Math.floor(Math.random() * data.length)
           randomLive.push(data[random])
         }
+        console.log(randomLive[0].players)
         randomLive.forEach((el, i) => {
           dotaLive.push({
             spectators: el.spectators,
